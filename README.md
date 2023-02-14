@@ -1,3 +1,9 @@
+# prodigy-textcat-openai
+
+This repository contains our prodigy + openai setup for building a textcat model on policy options.
+
+---
+
 <a href="https://explosion.ai"><img src="https://explosion.ai/assets/img/logo.svg" width="125" height="125" align="right" /></a>
 
 # Prodigy OpenAI recipes
