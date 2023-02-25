@@ -2,6 +2,17 @@
 
 This repository contains our prodigy + openai setup for building a textcat model on policy options.
 
+## design
+- use [rule-based approach](https://github.com/hcss-utils/fastcoref/blob/main/examples/find_policy_options.py) to find candidate sentences containing policy options suggestions
+- use `textcat.openai.fetch` recipe to fetch a large batch of examples upfront
+- review and correct annotations made by OpenAI's model
+- export data and train spacy textcat model
+
+
+## setup
+
+ORIGINAL README BELOW.
+
 ---
 
 <a href="https://explosion.ai"><img src="https://explosion.ai/assets/img/logo.svg" width="125" height="125" align="right" /></a>
