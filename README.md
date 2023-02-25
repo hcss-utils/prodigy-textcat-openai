@@ -4,7 +4,10 @@ This repository contains our prodigy + openai setup for building a textcat model
 
 ## design
 - use [rule-based approach](https://github.com/hcss-utils/fastcoref/blob/main/examples/find_policy_options.py) to find candidate sentences containing policy options suggestions
-- use `textcat.openai.fetch` recipe to fetch a large batch of examples upfront
+- use `textcat.openai.correct` recipe to curate openai's predictions: `python -m prodigy textcat.openai.correct policy_option_suggestion_openai data/sentences.jsonl --labels "policy option suggestion" --exclusive-classes --model "text-davinci-003" -F recipes/openai_textcat.py`
+- use `textcat.openai.fetch` recipe to fetch a large batch of examples upfront: `python -m prodigy textcat.openai.fetch data/sentences.jsonl data/predictions.jsonl --labels "policy option suggestion" -F recipes/openai_textcat.py`
+    - to avoid getting blocked, split sentences into multiple files: `split -l 100 data/sentences.jsonl data/split/sentences_`
+    - run one them manually one by one: `python -m prodigy textcat.openai.fetch data/split/sentences_aa data/predictions_aa.jsonl --labels "policy option suggestion" -F recipes/openai_textcat.py`
 - review and correct annotations made by OpenAI's model
 - export data and train spacy textcat model
 
