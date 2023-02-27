@@ -12,7 +12,8 @@ This repository contains our prodigy + openai setup for building a textcat model
     - then add to a database: `prodigy db-in policy_option_suggestion_openai data/predictions.jsonl`
     - review: `prodigy review policy_option_suggestion_openai_reviewed policy_option_suggestion_openai --label "policy option suggestion" --view-id classification`
 - review and correct annotations made by OpenAI's model
-- export data and train spacy textcat model
+- export data: `prodigy data-to-spacy training/corpus --textcat-multilabel policy_option_suggestion_openai -es 0.2`
+- train: see [`training`](./training/)
 
 
 ## setup
