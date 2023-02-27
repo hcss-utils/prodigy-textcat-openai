@@ -8,6 +8,9 @@ This repository contains our prodigy + openai setup for building a textcat model
 - use `textcat.openai.fetch` recipe to fetch a large batch of examples upfront: `python -m prodigy textcat.openai.fetch data/sentences.jsonl data/predictions.jsonl --labels "policy option suggestion" -F recipes/openai_textcat.py`
     - to avoid getting blocked, split sentences into multiple files: `split -l 100 data/sentences.jsonl data/split/sentences_`
     - run one them manually one by one: `python -m prodigy textcat.openai.fetch data/split/sentences_aa data/predictions_aa.jsonl --labels "policy option suggestion" -F recipes/openai_textcat.py`
+    - then merge with: `python scripts/merge.py data predictions.jsonl`
+    - then add to a database: `prodigy db-in policy_option_suggestion_openai data/predictions.jsonl`
+    - review: `prodigy review policy_option_suggestion_openai_reviewed policy_option_suggestion_openai --label "policy option suggestion" --view-id classification`
 - review and correct annotations made by OpenAI's model
 - export data and train spacy textcat model
 
